@@ -1,8 +1,7 @@
 import React from "react";
-import Canvas from "./Canvas";
 
 const Board = () => {
-  return <Canvas />;
+  return <div>Board</div>;
 };
 
 export default Board;

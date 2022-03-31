@@ -1,6 +1,5 @@
 import React from "react";
 import Board from "./Board";
-import Canvas from "./Canvas";
 
 const Game = () => {
   return (
