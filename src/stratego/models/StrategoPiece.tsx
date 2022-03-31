@@ -1,4 +1,4 @@
-class StrategoPiece {
+export default class StrategoPiece {
   id: string;
   name: string;
   color: string;
@@ -19,5 +19,3 @@ class StrategoPiece {
     // Retrieves square a piece is on.
   }
 }
-
-export {};
