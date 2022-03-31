@@ -1,0 +1,6 @@
+.board {
+  width: 100vw;
+  height: 100vw;
+  background-image: url("../../../assets/BetaBoard.png");
+  background-size: 100vw;
+}
