@@ -1,10 +1,10 @@
-import Square from "./Square";
+import Board from "./Board";
 
 export default class Game {
   playerBlue: boolean;
-  board: Square[];
+  board: Board;
 
-  constructor(playerBlue: boolean, board: Square[]) {
+  constructor(playerBlue: boolean, board: Board) {
     this.playerBlue = playerBlue;
     this.board = board;
   }
