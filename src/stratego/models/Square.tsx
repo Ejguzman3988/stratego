@@ -1,4 +1,4 @@
-import StrategoPiece from "./StrategoPiece";
+import StrategoPiece from "./Pieces/StrategoPiece";
 
 export default class Square {
   x: number;

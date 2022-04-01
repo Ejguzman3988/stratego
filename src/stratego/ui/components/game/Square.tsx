@@ -1,5 +1,5 @@
 import React from "react";
-import StrategoPiece from "../../../models/StrategoPiece";
+import StrategoPiece from "../../../models/Pieces/StrategoPiece";
 import styles from "./Board.module.css";
 import Piece from "./Piece";
 

@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 import styles from "./Piece.module.css";
-import StrategoPiece from "../../../models/StrategoPiece";
+import StrategoPiece from "../../../models/Pieces/StrategoPiece";
 
 export interface MyCustomCSS extends CSSProperties {
   "--piece-color": string;
