@@ -19,4 +19,15 @@ export default class StrategoPiece {
   getSquare() {
     // Retrieves square a piece is on.
   }
+
+  gotCaptured() {
+    // This piece has gotten captured
+  }
+
+  attack(target: StrategoPiece) {
+    // Logic using rank to identify which piece is captured.
+    // if target is lower rank then target gotCaptured
+    // if target is higher rank then this gotCaptured.
+    // if draw then nothing happens.
+  }
 }
