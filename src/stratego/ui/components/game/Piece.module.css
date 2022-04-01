@@ -1,0 +1,6 @@
+.piece {
+  width: calc(var(--cell) * 0.75);
+  height: calc(var(--cell) * 0.75);
+  background-color: var(--piece-color);
+  /* border: 2px white outset; */
+}

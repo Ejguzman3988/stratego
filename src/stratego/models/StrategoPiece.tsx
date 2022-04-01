@@ -1,11 +1,12 @@
+import { v4 as uuid } from "uuid";
 export default class StrategoPiece {
   id: string;
   name: string;
   color: string;
-  properties: Text;
+  properties: string;
 
-  constructor(id: string, name: string, color: string, properties: Text) {
-    this.id = id;
+  constructor(name: string, color: string, properties: string) {
+    this.id = uuid();
     this.name = name;
     this.color = color;
     this.properties = properties;

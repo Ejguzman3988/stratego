@@ -1,19 +1,20 @@
 .board {
-  width: 100vw;
-  height: 100vw;
+  width: var(--width);
+  height: var(--width);
   background-image: url("../../../assets/BetaBoard.png");
-  background-size: 100vw;
+  background-size: var(--width);
   display: flex;
   flex-wrap: wrap;
 }
 
 .square {
   border: 0.5px black inset;
-  width: calc(100vw / 10);
-  height: calc(100vw / 10);
+  width: var(--cell);
+  height: var(--cell);
   margin: 0;
-  display: grid;
+  display: flex;
   align-items: center;
+  justify-content: center;
 }
 .container {
   display: flex;
@@ -24,18 +25,18 @@
 
 @media only screen and (min-width: 768px) {
   .board {
-    width: 40vw;
-    height: 40vw;
+    width: var(--width);
+    height: var(--width);
     background-image: url("../../../assets/BetaBoard.png");
-    background-size: 40vw;
+    background-size: var(--width);
     display: flex;
     flex-wrap: wrap;
   }
 
   .square {
     border: 0.5px black inset;
-    width: calc(40vw / 10);
-    height: calc(40vw / 10);
+    width: var(--cell);
+    height: var(--cell);
     margin: 0;
     display: grid;
     align-items: center;
