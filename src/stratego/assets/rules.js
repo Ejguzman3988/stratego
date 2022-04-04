@@ -81,7 +81,7 @@ export const rules = {
       quantity: 1,
       movable: true,
     },
-    marshall: {
+    marshal: {
       name: "Marshal",
       details: "",
       rank: 10,

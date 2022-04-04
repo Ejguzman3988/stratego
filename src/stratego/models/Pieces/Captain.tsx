@@ -7,7 +7,7 @@ const pieces = rules.pieces;
 const piece = pieces.captain;
 
 export default class Captain extends StrategoPiece {
-  constructor(color: string, properties: string, game: Game) {
+  constructor(color: string, game: Game) {
     super(piece.name, color, piece.details, piece.rank, piece.movable, game);
   }
 }
