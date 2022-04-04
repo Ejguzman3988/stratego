@@ -1,14 +1,14 @@
 import React from "react";
 import StrategoPiece from "../../../models/Pieces/StrategoPiece";
 import styles from "./Board.module.css";
-import Piece from "./Piece";
+import PieceUI from "./PieceUI";
 
-const Square = ({ t, piece }: { t: any; piece: StrategoPiece }) => {
+const SquareUI = ({ t, piece }: { t: any; piece: StrategoPiece }) => {
   return (
     <div className={styles.square}>
-      <Piece piece={piece} />
+      <PieceUI piece={piece} />
     </div>
   );
 };
 
-export default Square;
+export default SquareUI;

@@ -6,7 +6,7 @@ export interface MyCustomCSS extends CSSProperties {
   "--piece-color": string;
 }
 
-const Piece = ({ piece }: { piece: StrategoPiece }) => {
+const PieceUI = ({ piece }: { piece: StrategoPiece }) => {
   return (
     <div
       className={styles.piece}
@@ -19,4 +19,4 @@ const Piece = ({ piece }: { piece: StrategoPiece }) => {
   );
 };
 
-export default Piece;
+export default PieceUI;

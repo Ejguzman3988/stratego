@@ -1,16 +1,19 @@
 import Board from "./Board";
+import { v4 as uuid } from "uuid";
 
 export default class Game {
-  playerBlue: boolean;
+  uuid: string;
+  playerRed: boolean;
   board: Board;
 
-  constructor(playerBlue: boolean) {
-    this.playerBlue = playerBlue;
-    this.board = new Board();
+  constructor(playerRed: boolean) {
+    this.uuid = uuid();
+    this.playerRed = playerRed;
+    this.board = new Board(this);
   }
 
   createBoard() {
-    if (this.playerBlue) {
+    if (this.playerRed) {
       // if player is blue set blue to the side of player
     } else {
       // make red to the side of player
