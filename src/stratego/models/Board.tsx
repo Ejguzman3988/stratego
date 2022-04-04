@@ -1,5 +1,6 @@
 import Square from "./Square";
 import StrategoPiece from "./Pieces/StrategoPiece";
+import { rules } from "../assets/rules";
 
 export default class Board {
   cells: Square[][];
@@ -17,5 +18,7 @@ export default class Board {
     this.blue_captures = [];
   }
 
-  createPieces() {}
+  createPieces() {
+    const pieces = rules.pieces;
+  }
 }

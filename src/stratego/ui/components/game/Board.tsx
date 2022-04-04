@@ -1,4 +1,5 @@
 import React from "react";
+import Game from "../../../models/Game";
 import StrategoPiece from "../../../models/Pieces/StrategoPiece";
 
 import styles from "./Board.module.css";
@@ -10,7 +11,9 @@ const Board = () => {
       {new Array(100).fill("").map((s, idx) => (
         <Square
           t={idx}
-          piece={new StrategoPiece("King", "red", "Descriptions")}
+          piece={
+            new StrategoPiece("King", "red", "Descriptions", new Game(true))
+          }
         />
       ))}
     </div>
