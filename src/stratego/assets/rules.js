@@ -109,8 +109,8 @@ export const rules = {
       "If the defending piece wins it remains where it is.",
     ],
     pieces: [
-      { name: "Marshal", quantity: 1 },
       { name: "General", quantity: 1 },
+      { name: "Marshal", quantity: 1 },
       { name: "Colonel", quantity: 2 },
       { name: "Major", quantity: 3 },
       { name: "Captain", quantity: 4 },

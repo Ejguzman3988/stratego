@@ -5,7 +5,7 @@ import StrategoPiece from "../../../models/Pieces/StrategoPiece";
 import styles from "./Board.module.css";
 import SquareUI from "./SquareUI";
 
-const BoardUI = () => {
+const BoardUI = ({ game }: { game: Game }) => {
   return <div className={styles.board}></div>;
 };
 

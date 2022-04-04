@@ -9,7 +9,7 @@ const GameUI = () => {
   return (
     <div className={styles.container}>
       <h2>Game</h2>
-      <BoardUI />
+      <BoardUI game={game} />
     </div>
   );
 };
