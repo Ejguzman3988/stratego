@@ -2,5 +2,8 @@
   width: calc(var(--cell) * 0.75);
   height: calc(var(--cell) * 0.75);
   background-color: var(--piece-color);
-  /* border: 2px white outset; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px calc(var(--piece-color, black)) outset;
 }

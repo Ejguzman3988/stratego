@@ -24,9 +24,9 @@ export default class Board {
 
   constructor(game: Game) {
     this.game = game;
-    this.cells = new Array(10).fill(Array(10).fill(""));
     this.red_pieces = this.createPieces("red", game);
     this.blue_pieces = this.createPieces("blue", game);
+    this.cells = [];
     this.red_captures = [];
     this.blue_captures = [];
   }
@@ -103,4 +103,30 @@ export default class Board {
     // debugger;
     return allPieces;
   }
+
+  createCells = (game: Game) => {
+    const currentPlayer = !game.playerRed
+      ? game.board.red_pieces
+      : game.board.blue_pieces.reverse();
+    const opponent = game.playerRed
+      ? game.board.red_pieces.reverse()
+      : game.board.blue_pieces;
+
+    const newBoard = currentPlayer.concat(new Array(20).fill(null), opponent);
+    const finalBoard: any[][] = [];
+
+    let concatArray: any[] = [];
+    for (let i = 0; i <= newBoard.length; i++) {
+      if (i === newBoard.length) {
+        finalBoard.push(concatArray);
+      } else if (i % 10 === 0) {
+        if (i !== 0) finalBoard.push(concatArray);
+        concatArray = [newBoard[i]];
+      } else {
+        concatArray.push(newBoard[i]);
+      }
+    }
+    this.cells = finalBoard;
+    return finalBoard;
+  };
 }

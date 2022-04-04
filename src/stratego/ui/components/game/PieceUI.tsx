@@ -6,16 +6,26 @@ export interface MyCustomCSS extends CSSProperties {
   "--piece-color": string;
 }
 
-const PieceUI = ({ piece }: { piece: StrategoPiece }) => {
+const PieceUI = ({ piece }: { piece: StrategoPiece | null }) => {
   return (
     <div
       className={styles.piece}
       style={
         {
-          "--piece-color": piece.color,
+          "--piece-color": piece?.color,
         } as MyCustomCSS
       }
-    ></div>
+    >
+      <span>
+        {piece
+          ? piece.rank
+            ? piece.rank
+            : piece.name === "Flag"
+            ? "F"
+            : "B"
+          : null}
+      </span>
+    </div>
   );
 };
 

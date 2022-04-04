@@ -3,7 +3,7 @@ import StrategoPiece from "../../../models/Pieces/StrategoPiece";
 import styles from "./Board.module.css";
 import PieceUI from "./PieceUI";
 
-const SquareUI = ({ t, piece }: { t: any; piece: StrategoPiece }) => {
+const SquareUI = ({ piece }: { piece: StrategoPiece | null }) => {
   return (
     <div className={styles.square}>
       <PieceUI piece={piece} />

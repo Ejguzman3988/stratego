@@ -15,6 +15,6 @@
     --blue-piece: blue;
     --width: 40vw;
     --cell: calc(var(--width) / 10);
-    --piece-color: black;
+    --piece-color: "";
   }
 }
