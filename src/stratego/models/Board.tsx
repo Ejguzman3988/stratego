@@ -109,8 +109,8 @@ export default class Board {
       ? game.board.red_pieces
       : game.board.blue_pieces.reverse();
     const opponent = game.playerRed
-      ? game.board.red_pieces.reverse()
-      : game.board.blue_pieces;
+      ? game.board.red_pieces
+      : game.board.blue_pieces.reverse();
 
     const newBoard = currentPlayer.concat(new Array(20).fill(null), opponent);
     const finalBoard: any[][] = [];
