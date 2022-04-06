@@ -1,6 +1,8 @@
 import { v4 as uuid } from "uuid";
 import Game from "../Game";
 import Board from "../Board";
+import PieceUI from "../../ui/components/game/PieceUI";
+
 export default class StrategoPiece {
   id: string;
   name: string;
@@ -9,6 +11,8 @@ export default class StrategoPiece {
   game: Game;
   rank: number | null;
   movable: boolean;
+  x: number;
+  y: number;
 
   constructor(
     name: string,
@@ -16,6 +20,8 @@ export default class StrategoPiece {
     details: string,
     rank: number | null,
     movable: boolean,
+    x: number,
+    y: number,
     game: Game
   ) {
     this.id = uuid();
@@ -24,11 +30,18 @@ export default class StrategoPiece {
     this.details = details;
     this.rank = rank;
     this.movable = movable;
+    this.x = x;
+    this.y = y;
     this.game = game;
   }
 
-  setSquare = () => {
+  setSquare = (x: number, y: number, onSet: (arg: StrategoPiece) => void) => {
     // Assigns the piece to a square
+    this.x = x;
+    this.y = y;
+    this.game.board.cells[--y][--x] = this;
+    console.log("SETTING");
+    onSet(this);
   };
 
   getSquare = () => {

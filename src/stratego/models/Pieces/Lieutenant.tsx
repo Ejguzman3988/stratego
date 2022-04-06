@@ -7,7 +7,16 @@ const pieces = rules.pieces;
 const piece = pieces.lieutenant;
 
 export default class Lieutenant extends StrategoPiece {
-  constructor(color: string, game: Game) {
-    super(piece.name, color, piece.details, piece.rank, piece.movable, game);
+  constructor(color: string, x: number, y: number, game: Game) {
+    super(
+      piece.name,
+      color,
+      piece.details,
+      piece.rank,
+      piece.movable,
+      x,
+      y,
+      game
+    );
   }
 }

@@ -10,6 +10,7 @@ export default class Game {
     this.uuid = uuid();
     this.playerRed = playerRed;
     this.board = new Board(this);
+    this.board.createCells(this);
   }
 
   createBoard() {

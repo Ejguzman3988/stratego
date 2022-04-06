@@ -13,25 +13,26 @@ import Scout from "./Pieces/Scout";
 import Spy from "./Pieces/Spy";
 import Bomb from "./Pieces/Bomb";
 import Flag from "./Pieces/Flag";
+import StrategoPiece from "./Pieces/StrategoPiece";
 
 export default class Board {
-  cells: Square[][];
-  red_pieces: void[];
-  blue_pieces: void[];
+  cells: StrategoPiece[][];
+  player_pieces: StrategoPiece[];
+  opponent_pieces: StrategoPiece[];
   red_captures: void[];
   blue_captures: void[];
   game: Game;
 
   constructor(game: Game) {
     this.game = game;
-    this.red_pieces = this.createPieces("red", game);
-    this.blue_pieces = this.createPieces("blue", game);
+    this.player_pieces = this.createPieces(game.playerRed, game);
+    this.opponent_pieces = this.createPieces(!game.playerRed, game);
     this.cells = [];
     this.red_captures = [];
     this.blue_captures = [];
   }
 
-  createPieces(color: string, game: Game) {
+  createPieces(player: boolean, game: Game) {
     const pieces: Array<{ name: string; quantity: number }> =
       rules.rules.pieces;
     const allPieces: any[] = [];
@@ -40,7 +41,8 @@ export default class Board {
       const piecesArr: any[] = [];
 
       for (let i = 0; i < quantity; i++) {
-        piecesArr.push(new cls(color, game));
+        const color = player ? "red" : "blue";
+        piecesArr.push(new cls(color, 0, 0, game));
       }
 
       return piecesArr;
@@ -100,31 +102,26 @@ export default class Board {
           break;
       }
     });
-    // debugger;
     return allPieces;
   }
 
   createCells = (game: Game) => {
-    const currentPlayer = !game.playerRed
-      ? game.board.red_pieces
-      : game.board.blue_pieces.reverse();
-    const opponent = game.playerRed
-      ? game.board.red_pieces
-      : game.board.blue_pieces.reverse();
-
-    const newBoard = currentPlayer.concat(new Array(20).fill(null), opponent);
-    const finalBoard: any[][] = [];
-
-    let concatArray: any[] = [];
-    for (let i = 0; i <= newBoard.length; i++) {
-      if (i === newBoard.length) {
-        finalBoard.push(concatArray);
-      } else if (i % 10 === 0) {
-        if (i !== 0) finalBoard.push(concatArray);
-        concatArray = [newBoard[i]];
-      } else {
-        concatArray.push(newBoard[i]);
-      }
+    const allPieces = this.opponent_pieces.reverse().concat(this.player_pieces);
+    const finalBoard: any[][] = new Array(10).fill(null).map(function () {
+      return new Array(10).fill(null);
+    });
+    for (let i = 0; i < allPieces.length; i++) {
+      let piece: StrategoPiece = allPieces[i];
+      const playerColor = game.playerRed ? "red" : "blue";
+      const x = (i % 10) + 1;
+      const y =
+        playerColor === piece.color
+          ? Math.floor(i / 10) + 3
+          : Math.floor(i / 10) + 1;
+      piece.x = x;
+      piece.y = y;
+      console.log({ x: x - 1, y: y - 1 });
+      finalBoard[piece.y - 1][piece.x - 1] = piece;
     }
     this.cells = finalBoard;
     return finalBoard;
