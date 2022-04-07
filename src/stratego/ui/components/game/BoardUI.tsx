@@ -15,18 +15,6 @@ const BoardUI = ({ game }: { game: Game }) => {
     setRows(board);
   }, []);
 
-  const handleSetting = (newSquare: Square, prevX: number, prevY: number) => {
-    setRows((rows) => {
-      let newArr = [...rows];
-      newArr[prevX][prevY] = null;
-
-      newSquare.x &&
-        newSquare.y &&
-        (newArr[newSquare.x][newSquare.y] = newSquare);
-      return newArr;
-    });
-  };
-
   const handlePieceClick = (piece: StrategoPiece) => {
     //piece.getMovableSquares().forEach();
   };

@@ -108,7 +108,7 @@ export default class Board {
   createCells = (game: Game) => {
     const allPieces = this.opponent_pieces.reverse().concat(this.player_pieces);
     const finalBoard: any[][] = new Array(10).fill(null).map(function () {
-      return new Array(10).fill(new Square());
+      return new Array(10).fill(new Square(game.board));
     });
     for (let i = 0; i < allPieces.length; i++) {
       let piece: StrategoPiece = allPieces[i];
@@ -119,7 +119,7 @@ export default class Board {
           ? Math.floor(i / 10) + 3
           : Math.floor(i / 10) + 1;
 
-      finalBoard[y - 1][x - 1] = new Square(x, y, piece);
+      finalBoard[y - 1][x - 1] = new Square(game.board, x, y, piece);
     }
     console.log(finalBoard);
     this.cells = finalBoard;

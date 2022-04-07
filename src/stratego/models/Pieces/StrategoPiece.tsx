@@ -1,7 +1,5 @@
 import { v4 as uuid } from "uuid";
 import Game from "../Game";
-import Board from "../Board";
-import PieceUI from "../../ui/components/game/PieceUI";
 import Square from "../Square";
 
 export default class StrategoPiece {
@@ -35,24 +33,6 @@ export default class StrategoPiece {
     this.game = game;
     this.square = null;
   }
-
-  setSquare = (
-    x: number,
-    y: number,
-    onSet: (arg: Square, x?: number, y?: number) => void
-  ) => {
-    // Assigns the piece to a square
-    if (this.square) {
-      const [prevX, prevY] = [this.square.x, this.square.y];
-      this.square.x = x;
-      this.square.y = y;
-      this.game.board.cells[x][y] = this.square;
-      console.log("SETTING");
-      onSet(this.square, prevX, prevY);
-    } else {
-      return false;
-    }
-  };
 
   getSquare = () => {
     // Retrieves square a piece is on.
