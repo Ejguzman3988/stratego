@@ -14,22 +14,26 @@ const BoardUI = ({ game }: { game: Game }) => {
     setRows(board);
   }, []);
 
-  const handleSetting = (newPiece: StrategoPiece) => {
+  const handleSetting = (
+    newPiece: StrategoPiece,
+    prevX: number,
+    prevY: number
+  ) => {
     setRows((rows) => {
       let newArr = [...rows];
-      newArr[newPiece.y][newPiece.x] = newPiece;
+      newArr[prevX][prevY] = null;
+      newArr[newPiece.x][newPiece.y] = newPiece;
       return newArr;
     });
   };
 
+  const handlePieceClick = (piece: StrategoPiece) => {
+    //piece.getMovableSquares().forEach();
+  };
+
   return (
     <div className={styles.board}>
-      {rows.map((row) => row.map((cell) => <SquareUI piece={cell} />))}
-      <button
-        onClick={() => game.board.cells[0][0].setSquare(5, 3, handleSetting)}
-      >
-        Set
-      </button>
+      {rows.map((row) => row.map((cell) => <SquareUI square={cell} />))}
     </div>
   );
 };
