@@ -5,9 +5,11 @@ import styles from "./Board.module.css";
 import PieceUI from "./PieceUI";
 
 const SquareUI = ({
+  mapCoord,
   square,
   handlePieceClick,
 }: {
+  mapCoord: number[];
   square: Square;
   handlePieceClick: (piece: StrategoPiece | null) => void;
 }) => {

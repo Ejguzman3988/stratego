@@ -18,21 +18,26 @@ const BoardUI = ({ game }: { game: Game }) => {
   const handlePieceClick = (piece: StrategoPiece | null) => {
     if (!piece) return;
     const pieceCoord = [piece.square?.x, piece.square?.y];
-    console.log(pieceCoord);
     for (let i = 0; i < piece.movableSquares.length; i++) {
       let coord = piece.movableSquares[i];
       const newRows = [...rows];
-      const square = newRows[coord[0] - 1][coord[1] - 1];
-      if (!square.piece) square.highlight = true;
+      const square = newRows[coord[1] - 1][coord[0] - 1];
+      if (!square.piece || (square.piece && piece.color !== square.piece.color))
+        square.highlight = true;
       setRows(newRows);
     }
   };
 
   return (
     <div className={styles.board}>
-      {rows.map((row) =>
-        row.map((cell) => (
-          <SquareUI square={cell} handlePieceClick={handlePieceClick} />
+      {rows.map((row, col) =>
+        row.map((cell, row) => (
+          <SquareUI
+            key={row}
+            mapCoord={[row + 1, col + 1]}
+            square={cell}
+            handlePieceClick={handlePieceClick}
+          />
         ))
       )}
     </div>
