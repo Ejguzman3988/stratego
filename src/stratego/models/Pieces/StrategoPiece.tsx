@@ -29,7 +29,7 @@ export default class StrategoPiece {
     this.details = details;
     this.rank = rank;
     this.movable = movable;
-    this.movableSquares = this.setMovableSquares();
+    this.movableSquares = [];
     this.game = game;
     this.square = null;
   }
@@ -43,7 +43,6 @@ export default class StrategoPiece {
   setMovableSquares = () => {
     const movableSquares: number[][] = [];
     let coord = { x: this.square?.x, y: this.square?.y };
-
     //left
     coord.x &&
       coord.y &&
@@ -62,10 +61,9 @@ export default class StrategoPiece {
     //down
     coord.x &&
       coord.y &&
-      coord.y > 0 &&
+      coord.y - 1 > 0 &&
       movableSquares.push([coord.x, coord.y - 1]);
-
-    return movableSquares;
+    this.movableSquares = movableSquares;
   };
 
   gotCaptured() {
