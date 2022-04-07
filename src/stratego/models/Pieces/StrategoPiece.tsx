@@ -47,22 +47,22 @@ export default class StrategoPiece {
     coord.x &&
       coord.y &&
       coord.x - 1 > 0 &&
-      movableSquares.push([coord.x - 1, coord.y]);
+      movableSquares.push([coord.x - 1, coord.y].reverse());
     // up
     coord.x &&
       coord.y &&
       coord.y - 1 <= 10 &&
-      movableSquares.push([coord.x, coord.y + 1]);
+      movableSquares.push([coord.x, coord.y + 1].reverse());
     //right
     coord.x &&
       coord.y &&
       coord.x <= 10 &&
-      movableSquares.push([coord.x + 1, coord.y]);
+      movableSquares.push([coord.x + 1, coord.y].reverse());
     //down
     coord.x &&
       coord.y &&
       coord.y - 1 > 0 &&
-      movableSquares.push([coord.x, coord.y - 1]);
+      movableSquares.push([coord.x, coord.y - 1].reverse());
     this.movableSquares = movableSquares;
   };
 

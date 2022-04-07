@@ -17,12 +17,13 @@ const BoardUI = ({ game }: { game: Game }) => {
 
   const handlePieceClick = (piece: StrategoPiece | null) => {
     if (!piece) return;
-
+    const pieceCoord = [piece.square?.x, piece.square?.y];
+    console.log(pieceCoord);
     for (let i = 0; i < piece.movableSquares.length; i++) {
       let coord = piece.movableSquares[i];
       const newRows = [...rows];
-
-      newRows[coord[0] - 1][coord[1] - 1].highlight = true;
+      const square = newRows[coord[0] - 1][coord[1] - 1];
+      if (!square.piece) square.highlight = true;
       setRows(newRows);
     }
   };
