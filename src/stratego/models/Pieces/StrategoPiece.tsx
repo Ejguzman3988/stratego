@@ -11,6 +11,7 @@ export default class StrategoPiece {
   game: Game;
   rank: number | null;
   movable: boolean;
+  movableSquares: number[][];
   x: number;
   y: number;
 
@@ -30,22 +31,45 @@ export default class StrategoPiece {
     this.details = details;
     this.rank = rank;
     this.movable = movable;
+    this.movableSquares = this.setMovableSquares();
     this.x = x;
     this.y = y;
     this.game = game;
   }
 
-  setSquare = (x: number, y: number, onSet: (arg: StrategoPiece) => void) => {
+  setSquare = (
+    x: number,
+    y: number,
+    onSet: (arg: StrategoPiece, x: number, y: number) => void
+  ) => {
     // Assigns the piece to a square
+    const [prevX, prevY] = [this.x, this.y];
     this.x = x;
     this.y = y;
-    this.game.board.cells[--y][--x] = this;
+    this.game.board.cells[x][y] = this;
     console.log("SETTING");
-    onSet(this);
+    onSet(this, prevX, prevY);
   };
 
   getSquare = () => {
     // Retrieves square a piece is on.
+  };
+
+  getMovableSquares = () => {};
+
+  setMovableSquares = () => {
+    const movableSquares: number[][] = [];
+
+    //left
+    if (this.x - 1 > 0) movableSquares.push([this.x - 1, this.y]);
+    // up
+    if (this.y <= 10) movableSquares.push([this.x, this.y + 1]);
+    //right
+    if (this.x <= 10) movableSquares.push([this.x + 1, this.y]);
+    //down
+    if (this.y > 0) movableSquares.push([this.x, this.y - 1]);
+
+    return movableSquares;
   };
 
   gotCaptured() {
