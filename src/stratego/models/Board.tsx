@@ -122,7 +122,6 @@ export default class Board {
       finalBoard[y - 1][x - 1] = new Square(game.board, x, y, piece);
       piece.setMovableSquares();
     }
-    console.log(finalBoard);
     this.cells = finalBoard;
     return finalBoard;
   };
