@@ -4,7 +4,13 @@ import Square from "../../../models/Square";
 import styles from "./Board.module.css";
 import PieceUI from "./PieceUI";
 
-const SquareUI = ({ square }: { square: Square }) => {
+const SquareUI = ({
+  square,
+  handlePieceClick,
+}: {
+  square: Square;
+  handlePieceClick: (piece: StrategoPiece | null) => void;
+}) => {
   return (
     <div
       className={styles.square}
@@ -12,7 +18,9 @@ const SquareUI = ({ square }: { square: Square }) => {
         square.highlight ? { background: "green", filter: "blur(1px)" } : {}
       }
     >
-      {square.piece ? <PieceUI piece={square.piece} /> : null}
+      {square.piece ? (
+        <PieceUI piece={square.piece} handlePieceClick={handlePieceClick} />
+      ) : null}
     </div>
   );
 };

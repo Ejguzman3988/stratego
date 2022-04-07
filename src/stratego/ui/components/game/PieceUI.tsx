@@ -6,7 +6,13 @@ export interface MyCustomCSS extends CSSProperties {
   "--piece-color": string;
 }
 
-const PieceUI = ({ piece }: { piece: StrategoPiece | null }) => {
+const PieceUI = ({
+  piece,
+  handlePieceClick,
+}: {
+  piece: StrategoPiece | null;
+  handlePieceClick: (piece: StrategoPiece | null) => void;
+}) => {
   return (
     <div
       className={styles.piece}
@@ -15,6 +21,7 @@ const PieceUI = ({ piece }: { piece: StrategoPiece | null }) => {
           "--piece-color": piece?.color,
         } as MyCustomCSS
       }
+      onClick={() => handlePieceClick(piece)}
     >
       <span>
         {piece

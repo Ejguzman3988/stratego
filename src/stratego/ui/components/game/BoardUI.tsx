@@ -15,13 +15,25 @@ const BoardUI = ({ game }: { game: Game }) => {
     setRows(board);
   }, []);
 
-  const handlePieceClick = (piece: StrategoPiece) => {
-    //piece.getMovableSquares().forEach();
+  const handlePieceClick = (piece: StrategoPiece | null) => {
+    if (!piece) return;
+
+    for (let i = 0; i < piece.movableSquares.length; i++) {
+      let coord = piece.movableSquares[i];
+      const newRows = [...rows];
+
+      newRows[coord[0] - 1][coord[1] - 1].highlight = true;
+      setRows(newRows);
+    }
   };
 
   return (
     <div className={styles.board}>
-      {rows.map((row) => row.map((cell) => <SquareUI square={cell} />))}
+      {rows.map((row) =>
+        row.map((cell) => (
+          <SquareUI square={cell} handlePieceClick={handlePieceClick} />
+        ))
+      )}
     </div>
   );
 };
