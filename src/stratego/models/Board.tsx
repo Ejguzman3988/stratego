@@ -16,7 +16,7 @@ import Flag from "./Pieces/Flag";
 import StrategoPiece from "./Pieces/StrategoPiece";
 
 export default class Board {
-  cells: StrategoPiece[][];
+  cells: Square[][];
   player_pieces: StrategoPiece[];
   opponent_pieces: StrategoPiece[];
   red_captures: void[];

@@ -9,7 +9,10 @@ export default class Square {
   constructor(x?: number, y?: number, piece?: StrategoPiece) {
     this.x = x;
     this.y = y;
-    this.piece = piece;
     this.highlight = false;
+    this.piece = piece;
+    if (this.piece) {
+      this.piece.square = this;
+    }
   }
 }

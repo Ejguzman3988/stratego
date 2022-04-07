@@ -2,6 +2,7 @@ import { v4 as uuid } from "uuid";
 import Game from "../Game";
 import Board from "../Board";
 import PieceUI from "../../ui/components/game/PieceUI";
+import Square from "../Square";
 
 export default class StrategoPiece {
   id: string;
@@ -12,8 +13,7 @@ export default class StrategoPiece {
   rank: number | null;
   movable: boolean;
   movableSquares: number[][];
-  x: number;
-  y: number;
+  square: Square | null;
 
   constructor(
     name: string,
@@ -32,23 +32,26 @@ export default class StrategoPiece {
     this.rank = rank;
     this.movable = movable;
     this.movableSquares = this.setMovableSquares();
-    this.x = x;
-    this.y = y;
     this.game = game;
+    this.square = null;
   }
 
   setSquare = (
     x: number,
     y: number,
-    onSet: (arg: StrategoPiece, x: number, y: number) => void
+    onSet: (arg: Square, x?: number, y?: number) => void
   ) => {
     // Assigns the piece to a square
-    const [prevX, prevY] = [this.x, this.y];
-    this.x = x;
-    this.y = y;
-    this.game.board.cells[x][y] = this;
-    console.log("SETTING");
-    onSet(this, prevX, prevY);
+    if (this.square) {
+      const [prevX, prevY] = [this.square.x, this.square.y];
+      this.square.x = x;
+      this.square.y = y;
+      this.game.board.cells[x][y] = this.square;
+      console.log("SETTING");
+      onSet(this.square, prevX, prevY);
+    } else {
+      return false;
+    }
   };
 
   getSquare = () => {
@@ -59,15 +62,28 @@ export default class StrategoPiece {
 
   setMovableSquares = () => {
     const movableSquares: number[][] = [];
+    let coord = { x: this.square?.x, y: this.square?.y };
 
     //left
-    if (this.x - 1 > 0) movableSquares.push([this.x - 1, this.y]);
+    coord.x &&
+      coord.y &&
+      coord.x - 1 > 0 &&
+      movableSquares.push([coord.x - 1, coord.y]);
     // up
-    if (this.y <= 10) movableSquares.push([this.x, this.y + 1]);
+    coord.x &&
+      coord.y &&
+      coord.y - 1 <= 10 &&
+      movableSquares.push([coord.x, coord.y + 1]);
     //right
-    if (this.x <= 10) movableSquares.push([this.x + 1, this.y]);
+    coord.x &&
+      coord.y &&
+      coord.x <= 10 &&
+      movableSquares.push([coord.x + 1, coord.y]);
     //down
-    if (this.y > 0) movableSquares.push([this.x, this.y - 1]);
+    coord.x &&
+      coord.y &&
+      coord.y > 0 &&
+      movableSquares.push([coord.x, coord.y - 1]);
 
     return movableSquares;
   };

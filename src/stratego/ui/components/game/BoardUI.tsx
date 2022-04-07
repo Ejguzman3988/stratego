@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Game from "../../../models/Game";
 import Flag from "../../../models/Pieces/Flag";
 import StrategoPiece from "../../../models/Pieces/StrategoPiece";
+import Square from "../../../models/Square";
 
 import styles from "./Board.module.css";
 import SquareUI from "./SquareUI";
@@ -14,15 +15,14 @@ const BoardUI = ({ game }: { game: Game }) => {
     setRows(board);
   }, []);
 
-  const handleSetting = (
-    newPiece: StrategoPiece,
-    prevX: number,
-    prevY: number
-  ) => {
+  const handleSetting = (newSquare: Square, prevX: number, prevY: number) => {
     setRows((rows) => {
       let newArr = [...rows];
       newArr[prevX][prevY] = null;
-      newArr[newPiece.x][newPiece.y] = newPiece;
+
+      newSquare.x &&
+        newSquare.y &&
+        (newArr[newSquare.x][newSquare.y] = newSquare);
       return newArr;
     });
   };
