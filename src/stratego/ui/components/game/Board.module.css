@@ -4,6 +4,8 @@
   background-image: url("../../../assets/BetaBoard.png");
   background-size: var(--width);
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
