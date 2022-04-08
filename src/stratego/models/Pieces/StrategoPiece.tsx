@@ -19,8 +19,6 @@ export default class StrategoPiece {
     details: string,
     rank: number | null,
     movable: boolean,
-    x: number,
-    y: number,
     game: Game
   ) {
     this.id = uuid();

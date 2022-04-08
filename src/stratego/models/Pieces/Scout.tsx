@@ -7,17 +7,8 @@ const pieces = rules.pieces;
 const piece = pieces.scout;
 
 export default class Scout extends StrategoPiece {
-  constructor(color: string, x: number, y: number, game: Game) {
-    super(
-      piece.name,
-      color,
-      piece.details,
-      piece.rank,
-      piece.movable,
-      x,
-      y,
-      game
-    );
+  constructor(color: string, game: Game) {
+    super(piece.name, color, piece.details, piece.rank, piece.movable, game);
   }
 
   walkableSpaces() {
