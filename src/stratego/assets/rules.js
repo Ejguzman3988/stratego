@@ -41,49 +41,56 @@ export const rules = {
     },
     sergeant: {
       name: "Sergeant",
-      details: "",
+      details:
+        "Piece that can move one space in each non-diagonal direction of empty space.",
       rank: 4,
       quantity: 4,
       movable: true,
     },
     lieutenant: {
       name: "Lieutenant",
-      details: "",
+      details:
+        "Piece that can move one space in each non-diagonal direction of empty space.",
       rank: 5,
       quantity: 4,
       movable: true,
     },
     captain: {
       name: "Captain",
-      details: "",
+      details:
+        "Piece that can move one space in each non-diagonal direction of empty space.",
       rank: 6,
       quantity: 4,
       movable: true,
     },
     major: {
       name: "Major",
-      details: "",
+      details:
+        "Piece that can move one space in each non-diagonal direction of empty space.",
       rank: 7,
       quantity: 3,
       movable: true,
     },
     colonel: {
       name: "Colonel",
-      details: "",
+      details:
+        "Piece that can move one space in each non-diagonal direction of empty space.",
       rank: 8,
       quantity: 2,
       movable: true,
     },
     general: {
       name: "General",
-      details: "",
+      details:
+        "Piece that can move one space in each non-diagonal direction of empty space.",
       rank: 9,
       quantity: 1,
       movable: true,
     },
     marshal: {
       name: "Marshal",
-      details: "",
+      details:
+        "Piece that can move one space in each non-diagonal direction of empty space.",
       rank: 10,
       quantity: 1,
       movable: true,
