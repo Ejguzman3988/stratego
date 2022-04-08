@@ -2,7 +2,7 @@ import Flag from "./Images/Flag.svg";
 import Bomb from "./Images/Bomb.svg";
 import Spy from "./Images/Spy.svg";
 import Scout from "./Images/Scout.svg";
-import Miner from "./Images/Miner.svg";
+import Defuser from "./Images/Defuser.svg";
 import Sergeant from "./Images/Sergeant.svg";
 import Lieutenant from "./Images/Lieutenant.svg";
 import Captain from "./Images/Captain.svg";
@@ -55,9 +55,8 @@ export const rules = {
       rank: 3,
       quantity: 5,
       movable: true,
-      image: Miner,
+      image: Defuser,
     },
-    image: Miner,
     sergeant: {
       name: "Sergeant",
       details:

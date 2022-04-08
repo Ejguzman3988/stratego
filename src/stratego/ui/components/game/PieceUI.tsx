@@ -23,15 +23,7 @@ const PieceUI = ({
       }
       onClick={() => handlePieceClick(piece)}
     >
-      <span>
-        {piece
-          ? piece.rank
-            ? piece.rank
-            : piece.name === "Flag"
-            ? "F"
-            : "B"
-          : null}
-      </span>
+      <span>{piece ? <img alt={piece.name} src={piece.image} /> : null}</span>
     </div>
   );
 };
