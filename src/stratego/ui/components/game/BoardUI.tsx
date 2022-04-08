@@ -34,7 +34,10 @@ const BoardUI = ({
       let coord = piece.movableSquares[i];
       const newRows = [...rows];
       const square = newRows[coord[1] - 1][coord[0] - 1];
-      if (!square.piece || (square.piece && piece.color !== square.piece.color))
+      if (
+        (!square.water && !square.piece) ||
+        (square.piece && piece.color !== square.piece.color)
+      )
         square.highlight = true;
       setRows(newRows);
     }

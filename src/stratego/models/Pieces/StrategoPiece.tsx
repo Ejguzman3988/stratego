@@ -19,6 +19,7 @@ export default class StrategoPiece {
     details: string,
     rank: number | null,
     movable: boolean,
+
     game: Game
   ) {
     this.id = uuid();

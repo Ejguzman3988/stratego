@@ -7,6 +7,7 @@ export default class Square {
   piece?: StrategoPiece;
   highlight: boolean;
   board: Board;
+  water: boolean;
 
   constructor(board: Board, x?: number, y?: number, piece?: StrategoPiece) {
     this.x = x;
@@ -14,9 +15,8 @@ export default class Square {
     this.highlight = false;
     this.piece = piece;
     this.board = board;
-    if (this.piece) {
-      this.piece.square = this;
-    }
+    this.piece && (this.piece.square = this);
+    this.water = false;
   }
 
   setSquare = () => {};

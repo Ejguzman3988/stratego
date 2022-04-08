@@ -110,6 +110,23 @@ export default class Board {
     const finalBoard: any[][] = new Array(10).fill(null).map(function () {
       return new Array(10).fill(null).map(() => new Square(game.board));
     });
+    const waterArr = [
+      [3, 5],
+      [3, 6],
+      [4, 5],
+      [4, 6],
+      [7, 5],
+      [7, 6],
+      [8, 5],
+      [8, 6],
+    ];
+
+    for (let coord of waterArr) {
+      let x = coord[0];
+      let y = coord[1];
+      finalBoard[y - 1][x - 1].water = true;
+    }
+
     for (let i = 0; i < allPieces.length; i++) {
       let piece: StrategoPiece = allPieces[i];
       const playerColor = game.playerRed ? "red" : "blue";
