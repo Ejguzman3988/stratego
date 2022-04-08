@@ -7,7 +7,15 @@ const piece = pieces.spy;
 
 export default class Spy extends StrategoPiece {
   constructor(color: string, game: Game) {
-    super(piece.name, color, piece.details, piece.rank, piece.movable, game);
+    super(
+      piece.name,
+      color,
+      piece.details,
+      piece.rank,
+      piece.movable,
+      piece.image,
+      game
+    );
   }
 
   attack(target: StrategoPiece) {

@@ -1,3 +1,16 @@
+import Flag from "./Images/Flag.svg";
+import Bomb from "./Images/Bomb.svg";
+import Spy from "./Images/Spy.svg";
+import Scout from "./Images/Scout.svg";
+import Miner from "./Images/Miner.svg";
+import Sergeant from "./Images/Sergeant.svg";
+import Lieutenant from "./Images/Lieutenant.svg";
+import Captain from "./Images/Captain.svg";
+import Colonel from "./Images/Colonel.svg";
+import Major from "./Images/Major.svg";
+import General from "./Images/General.svg";
+import Marshal from "./Images/Marshal.svg";
+
 export const rules = {
   pieces: {
     flag: {
@@ -7,6 +20,7 @@ export const rules = {
       rank: null,
       quantity: 1,
       movable: false,
+      image: Flag,
     },
     bomb: {
       name: "Bomb",
@@ -15,6 +29,7 @@ export const rules = {
       rank: null,
       quantity: 6,
       movable: false,
+      image: Bomb,
     },
     spy: {
       name: "Spy",
@@ -23,6 +38,7 @@ export const rules = {
       rank: 1,
       quantity: 1,
       movable: true,
+      image: Spy,
     },
     scout: {
       name: "Scout",
@@ -31,6 +47,7 @@ export const rules = {
       rank: 2,
       quantity: 8,
       movable: true,
+      image: Scout,
     },
     miner: {
       name: "Miner",
@@ -38,7 +55,9 @@ export const rules = {
       rank: 3,
       quantity: 5,
       movable: true,
+      image: Miner,
     },
+    image: Miner,
     sergeant: {
       name: "Sergeant",
       details:
@@ -46,6 +65,7 @@ export const rules = {
       rank: 4,
       quantity: 4,
       movable: true,
+      image: Sergeant,
     },
     lieutenant: {
       name: "Lieutenant",
@@ -54,6 +74,7 @@ export const rules = {
       rank: 5,
       quantity: 4,
       movable: true,
+      image: Lieutenant,
     },
     captain: {
       name: "Captain",
@@ -62,6 +83,7 @@ export const rules = {
       rank: 6,
       quantity: 4,
       movable: true,
+      image: Captain,
     },
     major: {
       name: "Major",
@@ -70,6 +92,7 @@ export const rules = {
       rank: 7,
       quantity: 3,
       movable: true,
+      image: Major,
     },
     colonel: {
       name: "Colonel",
@@ -78,6 +101,7 @@ export const rules = {
       rank: 8,
       quantity: 2,
       movable: true,
+      image: Colonel,
     },
     general: {
       name: "General",
@@ -86,6 +110,7 @@ export const rules = {
       rank: 9,
       quantity: 1,
       movable: true,
+      image: General,
     },
     marshal: {
       name: "Marshal",
@@ -94,6 +119,7 @@ export const rules = {
       rank: 10,
       quantity: 1,
       movable: true,
+      image: Marshal,
     },
   },
   rules: {

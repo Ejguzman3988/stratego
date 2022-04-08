@@ -8,6 +8,14 @@ const piece = pieces.general;
 
 export default class General extends StrategoPiece {
   constructor(color: string, game: Game) {
-    super(piece.name, color, piece.details, piece.rank, piece.movable, game);
+    super(
+      piece.name,
+      color,
+      piece.details,
+      piece.rank,
+      piece.movable,
+      piece.image,
+      game
+    );
   }
 }

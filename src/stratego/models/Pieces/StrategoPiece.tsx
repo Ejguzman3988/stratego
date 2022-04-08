@@ -10,6 +10,7 @@ export default class StrategoPiece {
   game: Game;
   rank: number | null;
   movable: boolean;
+  image: string;
   movableSquares: number[][];
   square: Square | null;
 
@@ -19,7 +20,7 @@ export default class StrategoPiece {
     details: string,
     rank: number | null,
     movable: boolean,
-
+    image: string,
     game: Game
   ) {
     this.id = uuid();
@@ -31,6 +32,7 @@ export default class StrategoPiece {
     this.movableSquares = [];
     this.game = game;
     this.square = null;
+    this.image = image;
   }
 
   getSquare = () => {
