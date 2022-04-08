@@ -23,7 +23,9 @@ const PieceUI = ({
       }
       onClick={() => handlePieceClick(piece)}
     >
-      <span>{piece ? <img alt={piece.name} src={piece.image} /> : null}</span>
+      <span style={{ border: `5px var(--${piece?.color}-piece) outset` }}>
+        {piece && <img src={piece.image} alt={piece.name} />}
+      </span>
     </div>
   );
 };
