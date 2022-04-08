@@ -1,17 +1,28 @@
 import Board from "./Board";
 import { v4 as uuid } from "uuid";
+import StrategoPiece from "./Pieces/StrategoPiece";
 
 export default class Game {
   uuid: string;
   playerRed: boolean;
   board: Board;
+  selectedPiece?: StrategoPiece;
+  setGame: (arg: Game) => {};
 
-  constructor(playerRed: boolean) {
+  constructor(playerRed: boolean, setGame: any) {
     this.uuid = uuid();
     this.playerRed = playerRed;
     this.board = new Board(this);
     this.board.createCells(this);
+    this.setGame = setGame;
+    this.setThisGame();
   }
+
+  setThisGame = () => {
+    this.setGame(this);
+  };
+
+  getSelectedPiece = () => this.selectedPiece;
 
   createBoard() {
     if (this.playerRed) {
@@ -19,6 +30,10 @@ export default class Game {
     } else {
       // make red to the side of player
     }
+  }
+
+  setSelectedPiece(piece: StrategoPiece) {
+    this.selectedPiece = piece;
   }
 
   movePiece(pieceId: string, coordinate: [number, number]) {

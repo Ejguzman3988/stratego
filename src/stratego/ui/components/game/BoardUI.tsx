@@ -7,17 +7,29 @@ import Square from "../../../models/Square";
 import styles from "./Board.module.css";
 import SquareUI from "./SquareUI";
 
-const BoardUI = ({ game }: { game: Game }) => {
+const BoardUI = ({
+  game,
+  selectedPiece,
+  handleSelectedPiece,
+}: {
+  game: Game | null;
+  selectedPiece: StrategoPiece | null;
+  handleSelectedPiece: (piece: StrategoPiece) => void;
+}) => {
   const [rows, setRows] = useState<any[][]>([[]]);
 
   useEffect(() => {
-    const board = game.board.cells;
-    setRows(board);
-  }, []);
-
+    const board = game?.board.cells;
+    board && setRows(board);
+    console.log(game?.selectedPiece);
+  }, [game]);
+  console.log(game?.selectedPiece);
   const handlePieceClick = (piece: StrategoPiece | null) => {
     if (!piece) return;
+    handleSelectedPiece(piece);
     const pieceCoord = [piece.square?.x, piece.square?.y];
+    game?.setSelectedPiece(piece);
+    game?.setThisGame();
     for (let i = 0; i < piece.movableSquares.length; i++) {
       let coord = piece.movableSquares[i];
       const newRows = [...rows];
