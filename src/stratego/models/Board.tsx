@@ -19,6 +19,7 @@ export default class Board {
   cells: Square[][];
   player_pieces: StrategoPiece[];
   opponent_pieces: StrategoPiece[];
+  highlightedSquares: Square[];
   red_captures: void[];
   blue_captures: void[];
   game: Game;
@@ -30,6 +31,7 @@ export default class Board {
     this.cells = [];
     this.red_captures = [];
     this.blue_captures = [];
+    this.highlightedSquares = [];
   }
 
   createPieces(player: boolean, game: Game) {
