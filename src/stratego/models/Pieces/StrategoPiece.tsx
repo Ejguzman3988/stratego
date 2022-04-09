@@ -37,7 +37,7 @@ export default class StrategoPiece {
   };
 
   handlePieceClick = () => {
-    this.square && (this.square.board.game.selectedPiece = this);
+    this.square && this.square.board.game.setSelectedPiece(this);
     for (let i = 0; i < this.movableSquares.length; i++) {
       let coord = this.movableSquares[i];
       const square = this.square?.board.cells[coord[1] - 1][coord[0] - 1];
@@ -45,7 +45,9 @@ export default class StrategoPiece {
         (!square?.water && !square?.piece) ||
         (square.piece && this.color !== square.piece.color)
       )
-        square && (square.highlight = true);
+        square &&
+          (square.highlight = true) &&
+          this.square?.board.highlightedSquares.push(square);
     }
   };
 

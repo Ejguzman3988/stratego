@@ -14,6 +14,8 @@ export default class Game {
       board: observable,
       playerRed: observable,
       selectedPiece: observable,
+      getSelectedPiece: computed,
+      setSelectedPiece: action,
     });
 
     this.uuid = uuid();
@@ -21,6 +23,22 @@ export default class Game {
     this.board = new Board(this);
     this.board.createCells(this);
   }
+
+  get getSelectedPiece() {
+    return this.selectedPiece;
+  }
+
+  setSelectedPiece = (piece: StrategoPiece) => {
+    this.unSelectPiece();
+    this.selectedPiece = piece;
+  };
+
+  unSelectPiece = () => {
+    this.board.highlightedSquares.forEach(
+      (square) => (square.highlight = false)
+    );
+    this.selectedPiece = undefined;
+  };
 
   getCurrentPlayer = () => {
     return this.playerRed ? "red" : "blue";
