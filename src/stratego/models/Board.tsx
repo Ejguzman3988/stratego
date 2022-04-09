@@ -26,8 +26,8 @@ export default class Board {
 
   constructor(game: Game) {
     this.game = game;
-    this.player_pieces = this.createPieces(game.playerRed, game);
-    this.opponent_pieces = this.createPieces(!game.playerRed, game);
+    this.player_pieces = this.createPieces(game.playerRed, this.game);
+    this.opponent_pieces = this.createPieces(!game.playerRed, this.game);
     this.cells = [];
     this.red_captures = [];
     this.blue_captures = [];
@@ -44,7 +44,7 @@ export default class Board {
 
       for (let i = 0; i < quantity; i++) {
         const color = player ? "red" : "blue";
-        piecesArr.push(new cls(color, 0, 0, game));
+        piecesArr.push(new cls(color, game));
       }
 
       return piecesArr;
@@ -131,7 +131,7 @@ export default class Board {
 
     for (let i = 0; i < allPieces.length; i++) {
       let piece: StrategoPiece = allPieces[i];
-      const playerColor = game.playerRed ? "red" : "blue";
+      const playerColor = game.getCurrentPlayer();
       const x = (i % 10) + 1;
       const y =
         playerColor === piece.color

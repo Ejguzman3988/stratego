@@ -52,7 +52,7 @@ const GameUI = () => {
         selectedPiece={selectedPiece}
         handleSelectedPiece={handleSelectedPiece}
       />
-      <PieceCardUI piece={selectedPiece} />
+      {/* <PieceCardUI piece={selectedPiece} /> */}
     </div>
   );
 };

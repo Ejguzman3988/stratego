@@ -39,6 +39,8 @@ export default class StrategoPiece {
     // Retrieves square a piece is on.
   };
 
+  isPlayerPiece = () => this.game.getCurrentPlayer() === this.color;
+
   getMovableSquares = () => {};
 
   setMovableSquares = () => {

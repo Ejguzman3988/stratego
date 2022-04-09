@@ -22,6 +22,10 @@ export default class Game {
     this.setGame(this);
   };
 
+  getCurrentPlayer = () => {
+    return this.playerRed ? "red" : "blue";
+  };
+
   getSelectedPiece = () => this.selectedPiece;
 
   createBoard() {
