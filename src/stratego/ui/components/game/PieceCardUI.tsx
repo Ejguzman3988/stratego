@@ -1,7 +1,7 @@
 import React from "react";
 import StrategoPiece from "../../../models/Pieces/StrategoPiece";
 
-const PieceCardUI = ({ piece }: { piece: StrategoPiece | null }) => {
+const PieceCardUI = ({ piece }: { piece?: StrategoPiece }) => {
   return (
     <div>
       {piece && (

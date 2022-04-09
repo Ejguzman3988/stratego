@@ -7,15 +7,14 @@ const pieces = rules.pieces;
 const piece = pieces.scout;
 
 export default class Scout extends StrategoPiece {
-  constructor(color: string, game: Game) {
+  constructor(color: string) {
     super(
       piece.name,
       color,
       piece.details,
       piece.rank,
       piece.movable,
-      piece.image,
-      game
+      piece.image
     );
   }
 

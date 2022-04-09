@@ -6,15 +6,14 @@ const pieces = rules.pieces;
 const piece = pieces.marshal;
 
 export default class Marshal extends StrategoPiece {
-  constructor(color: string, game: Game) {
+  constructor(color: string) {
     super(
       piece.name,
       color,
       piece.details,
       piece.rank,
       piece.movable,
-      piece.image,
-      game
+      piece.image
     );
   }
 }

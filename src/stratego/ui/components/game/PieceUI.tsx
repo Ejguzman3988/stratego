@@ -7,13 +7,7 @@ export interface MyCustomCSS extends CSSProperties {
   "--piece-color": string;
 }
 
-const PieceUI = ({
-  piece,
-  handlePieceClick,
-}: {
-  piece: StrategoPiece | null;
-  handlePieceClick: (piece: StrategoPiece | null) => void;
-}) => {
+const PieceUI = ({ piece }: { piece: StrategoPiece | null }) => {
   return (
     <div
       className={styles.piece}
@@ -22,7 +16,7 @@ const PieceUI = ({
           "--piece-color": piece?.color,
         } as MyCustomCSS
       }
-      onClick={() => handlePieceClick(piece)}
+      onClick={() => piece?.handlePieceClick()}
     >
       {/* <span style={{ border: `5px var(--${piece?.color}-piece) outset` }}> */}
       <span>

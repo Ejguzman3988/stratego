@@ -7,21 +7,20 @@ const pieces = rules.pieces;
 const piece = pieces.miner;
 
 export default class Miner extends StrategoPiece {
-  constructor(color: string, game: Game) {
+  constructor(color: string) {
     super(
       piece.name,
       color,
       piece.details,
       piece.rank,
       piece.movable,
-      piece.image,
-      game
+      piece.image
     );
   }
 
   attack(target: StrategoPiece) {
     if (target.color === this.color) return;
     if (target.name === "Bomb") return target.gotCaptured();
-    this.game.attack(this, target);
+    this.square?.board.game.attack(this, target);
   }
 }

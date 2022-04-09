@@ -7,7 +7,6 @@ export default class StrategoPiece {
   name: string;
   color: string;
   details: string;
-  game: Game;
   rank: number | null;
   movable: boolean;
   image: string;
@@ -20,8 +19,7 @@ export default class StrategoPiece {
     details: string,
     rank: number | null,
     movable: boolean,
-    image: string,
-    game: Game
+    image: string
   ) {
     this.id = uuid();
     this.name = name;
@@ -30,7 +28,6 @@ export default class StrategoPiece {
     this.rank = rank;
     this.movable = movable;
     this.movableSquares = [];
-    this.game = game;
     this.square = null;
     this.image = image;
   }
@@ -39,7 +36,21 @@ export default class StrategoPiece {
     // Retrieves square a piece is on.
   };
 
-  isPlayerPiece = () => this.game.getCurrentPlayer() === this.color;
+  handlePieceClick = () => {
+    this.square && (this.square.board.game.selectedPiece = this);
+    for (let i = 0; i < this.movableSquares.length; i++) {
+      let coord = this.movableSquares[i];
+      const square = this.square?.board.cells[coord[1] - 1][coord[0] - 1];
+      if (
+        (!square?.water && !square?.piece) ||
+        (square.piece && this.color !== square.piece.color)
+      )
+        square && (square.highlight = true);
+    }
+  };
+
+  isPlayerPiece = () =>
+    this.square?.board.game.getCurrentPlayer() === this.color;
 
   getMovableSquares = () => {};
 
@@ -54,7 +65,7 @@ export default class StrategoPiece {
     // down
     coord.x &&
       coord.y &&
-      coord.y + 1 < 10 &&
+      coord.y + 1 <= 10 &&
       movableSquares.push([coord.x, coord.y + 1]);
     //right
     coord.x &&

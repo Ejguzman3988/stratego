@@ -7,11 +7,9 @@ import PieceUI from "./PieceUI";
 const SquareUI = ({
   mapCoord,
   square,
-  handlePieceClick,
 }: {
   mapCoord: number[];
   square: Square;
-  handlePieceClick: (piece: StrategoPiece | null) => void;
 }) => {
   return (
     <div
@@ -20,9 +18,7 @@ const SquareUI = ({
         square.highlight ? { background: "green", filter: "blur(1px)" } : {}
       }
     >
-      {square.piece ? (
-        <PieceUI piece={square.piece} handlePieceClick={handlePieceClick} />
-      ) : null}
+      {square.piece ? <PieceUI piece={square.piece} /> : null}
     </div>
   );
 };

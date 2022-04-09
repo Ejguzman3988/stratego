@@ -2,20 +2,16 @@ import React, { useEffect, useState } from "react";
 import BoardUI from "./BoardUI";
 import styles from "./Board.module.css";
 import Game from "../../../models/Game";
+import { globalGame } from "../../../models/Game";
 import StrategoPiece from "../../../models/Pieces/StrategoPiece";
 import PieceCardUI from "./PieceCardUI";
 import { HashLoader } from "react-spinners";
+import { observer } from "mobx-react-lite";
 
 const GameUI = () => {
   const [loading, setLoading] = useState<boolean>(true);
-  const [game, setGame] = useState<Game | null>(null);
-  const [selectedPiece, setSelectedPiece] = useState<StrategoPiece | null>(
-    null
-  );
-
   useEffect(() => {
-    const game = new Game(true, setGame);
-    const pictures = game.board.player_pieces.map((piece) => piece.image);
+    const pictures = globalGame.board.player_pieces.map((piece) => piece.image);
 
     const cacheImages = (async (srcArr: string[]) => {
       const promises = await srcArr.map((src: string) => {
@@ -33,10 +29,6 @@ const GameUI = () => {
     })(pictures);
   }, []);
 
-  const handleSelectedPiece = (piece: StrategoPiece) => {
-    setSelectedPiece(piece);
-  };
-
   return loading ? (
     <div className={styles.container}>
       <div className={styles.board} style={{ filter: "blur(5px)" }}></div>
@@ -47,14 +39,10 @@ const GameUI = () => {
   ) : (
     <div className={styles.container}>
       <h2>Game</h2>
-      <BoardUI
-        game={game}
-        selectedPiece={selectedPiece}
-        handleSelectedPiece={handleSelectedPiece}
-      />
-      {/* <PieceCardUI piece={selectedPiece} /> */}
+      <BoardUI />
+      <PieceCardUI piece={globalGame.selectedPiece} />
     </div>
   );
 };
 
-export default GameUI;
+export default observer(GameUI);
