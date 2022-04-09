@@ -1,32 +1,30 @@
 import Board from "./Board";
 import { v4 as uuid } from "uuid";
 import StrategoPiece from "./Pieces/StrategoPiece";
+import { action, computed, makeObservable, observable } from "mobx";
 
 export default class Game {
   uuid: string;
   playerRed: boolean;
   board: Board;
   selectedPiece?: StrategoPiece;
-  setGame: (arg: Game) => {};
 
-  constructor(playerRed: boolean, setGame: any) {
+  constructor(playerRed: boolean) {
+    makeObservable(this, {
+      board: observable,
+      playerRed: observable,
+      selectedPiece: observable,
+    });
+
     this.uuid = uuid();
     this.playerRed = playerRed;
     this.board = new Board(this);
     this.board.createCells(this);
-    this.setGame = setGame;
-    this.setThisGame();
   }
-
-  setThisGame = () => {
-    this.setGame(this);
-  };
 
   getCurrentPlayer = () => {
     return this.playerRed ? "red" : "blue";
   };
-
-  getSelectedPiece = () => this.selectedPiece;
 
   createBoard() {
     if (this.playerRed) {
@@ -34,10 +32,6 @@ export default class Game {
     } else {
       // make red to the side of player
     }
-  }
-
-  setSelectedPiece(piece: StrategoPiece) {
-    this.selectedPiece = piece;
   }
 
   movePiece(pieceId: string, coordinate: [number, number]) {
@@ -54,3 +48,5 @@ export default class Game {
     // if draw then nothing happens.
   }
 }
+
+export const globalGame = new Game(true);
