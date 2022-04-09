@@ -11,7 +11,7 @@ export default class StrategoPiece {
   movable: boolean;
   image: string;
   movableSquares: number[][];
-  square: Square | null;
+  square?: Square;
 
   constructor(
     name: string,
@@ -28,7 +28,6 @@ export default class StrategoPiece {
     this.rank = rank;
     this.movable = movable;
     this.movableSquares = [];
-    this.square = null;
     this.image = image;
   }
 
@@ -73,7 +72,7 @@ export default class StrategoPiece {
     //right
     coord.x &&
       coord.y &&
-      coord.x + 1 < 10 &&
+      coord.x + 1 <= 10 &&
       movableSquares.push([coord.x + 1, coord.y]);
     //up
     coord.x &&

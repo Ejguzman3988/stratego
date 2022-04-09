@@ -149,4 +149,10 @@ export default class Board {
     this.cells = finalBoard;
     return finalBoard;
   };
+
+  findSquare = (coord: number[]) => {
+    const [x, y] = coord;
+
+    return this.cells[y][x];
+  };
 }
