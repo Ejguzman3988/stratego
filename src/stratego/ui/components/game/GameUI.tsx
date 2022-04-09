@@ -7,8 +7,8 @@ import PieceCardUI from "./PieceCardUI";
 import { HashLoader } from "react-spinners";
 
 const GameUI = () => {
-  const [loading, setLoading] = useState(true);
-  const [game, setGame] = useState(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [game, setGame] = useState<Game | null>(null);
   const [selectedPiece, setSelectedPiece] = useState<StrategoPiece | null>(
     null
   );

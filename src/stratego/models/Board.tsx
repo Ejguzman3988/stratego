@@ -14,17 +14,20 @@ import Spy from "./Pieces/Spy";
 import Bomb from "./Pieces/Bomb";
 import Flag from "./Pieces/Flag";
 import StrategoPiece from "./Pieces/StrategoPiece";
+import { v4 as uuid } from "uuid";
 
 export default class Board {
+  uuid: string;
   cells: Square[][];
   player_pieces: StrategoPiece[];
   opponent_pieces: StrategoPiece[];
   highlightedSquares: Square[];
-  red_captures: void[];
-  blue_captures: void[];
+  red_captures: StrategoPiece[];
+  blue_captures: StrategoPiece[];
   game: Game;
 
   constructor(game: Game) {
+    this.uuid = uuid();
     this.game = game;
     this.player_pieces = this.createPieces(game.playerRed, this.game);
     this.opponent_pieces = this.createPieces(!game.playerRed, this.game);
