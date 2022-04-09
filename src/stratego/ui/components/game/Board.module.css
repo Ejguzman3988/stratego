@@ -19,6 +19,32 @@
   color: white;
   font-size: 1.5rem;
 }
+
+.squareSelected {
+  border: 5px var(--selected-color) inset;
+  width: var(--cell);
+  height: var(--cell);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  opacity: 0.65;
+}
+
+.squareHighlighted {
+  border: 0.5px black inset;
+  width: var(--cell);
+  height: var(--cell);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  background: var(--selected-color);
+  filter: blur(1px);
+}
+
 .container {
   display: flex;
   flex-direction: column;

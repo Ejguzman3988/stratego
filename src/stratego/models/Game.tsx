@@ -16,6 +16,7 @@ export default class Game {
       selectedPiece: observable,
       getSelectedPiece: computed,
       setSelectedPiece: action,
+      unSelectPiece: action,
     });
 
     this.uuid = uuid();

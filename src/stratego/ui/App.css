@@ -1,4 +1,5 @@
 :root {
+  --selected-color: green;
   --red-piece: red;
   --blue-piece: blue;
   --width: 100vw;

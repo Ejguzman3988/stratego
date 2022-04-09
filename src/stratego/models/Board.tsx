@@ -112,8 +112,10 @@ export default class Board {
 
   createCells = (game: Game) => {
     const allPieces = this.opponent_pieces.reverse().concat(this.player_pieces);
-    const finalBoard: any[][] = new Array(10).fill(null).map(function () {
-      return new Array(10).fill(null).map(() => new Square(game.board));
+    const finalBoard: any[][] = new Array(10).fill(null).map(function (_, y) {
+      return new Array(10)
+        .fill(null)
+        .map((_, x) => new Square(game.board, x + 1, y + 1));
     });
     const waterArr = [
       [3, 5],

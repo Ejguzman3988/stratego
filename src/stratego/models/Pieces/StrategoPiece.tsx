@@ -57,6 +57,7 @@ export default class StrategoPiece {
   getMovableSquares = () => {};
 
   setMovableSquares = () => {
+    this.movableSquares = [];
     const movableSquares: number[][] = [];
     let coord = { x: this.square?.x, y: this.square?.y };
     //left
@@ -80,6 +81,10 @@ export default class StrategoPiece {
       coord.y - 1 > 0 &&
       movableSquares.push([coord.x, coord.y - 1]);
     this.movableSquares = movableSquares;
+  };
+
+  movePiece = () => {
+    this.setMovableSquares();
   };
 
   gotCaptured() {
