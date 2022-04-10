@@ -9,6 +9,7 @@ export default class Game {
   board: Board;
   selectedPiece?: StrategoPiece;
   playerTurn: boolean;
+  started: boolean;
 
   constructor(playerRed: boolean) {
     makeObservable(this, {
@@ -25,6 +26,7 @@ export default class Game {
     this.playerTurn = playerRed ? true : false;
     this.board = new Board(this);
     this.board.createCells(this);
+    this.started = false;
   }
 
   get getSelectedPiece() {
@@ -59,6 +61,11 @@ export default class Game {
   movePiece(pieceId: string, coordinate: [number, number]) {
     // code to make piece move.
   }
+
+  changeTurn = () => {
+    if (!this.started) this.started = true;
+    this.playerTurn = !this.playerTurn;
+  };
 
   attack(current: any, target: any) {
     if (target.color === current.color) return;

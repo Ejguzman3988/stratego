@@ -38,6 +38,11 @@ export default class StrategoPiece {
   };
 
   handlePieceClick = () => {
+    // const game = this.square.board.game;
+
+    // if (!game.playerTurn) return;
+    // if (!(game.getCurrentPlayer() === this.color)) return;
+
     this.square && this.square.board.game.setSelectedPiece(this);
     this.setMovableSquares();
     for (let i = 0; i < this.movableSquares.length; i++) {

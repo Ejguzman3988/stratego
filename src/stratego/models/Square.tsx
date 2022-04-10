@@ -37,6 +37,7 @@ export default class Square {
     piece.square = this;
     piece.movePiece();
     this.piece = piece;
+    this.board.game.changeTurn();
     // Set the current square to the new coords
   };
 }
