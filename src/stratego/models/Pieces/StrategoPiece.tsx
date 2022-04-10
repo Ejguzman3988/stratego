@@ -11,7 +11,7 @@ export default class StrategoPiece {
   movable: boolean;
   image: string;
   movableSquares: number[][];
-  square?: Square;
+  square: Square;
 
   constructor(
     name: string,
@@ -19,7 +19,8 @@ export default class StrategoPiece {
     details: string,
     rank: number | null,
     movable: boolean,
-    image: string
+    image: string,
+    square: Square
   ) {
     this.id = uuid();
     this.name = name;
@@ -29,6 +30,7 @@ export default class StrategoPiece {
     this.movable = movable;
     this.movableSquares = [];
     this.image = image;
+    this.square = square;
   }
 
   getSquare = () => {
@@ -37,6 +39,7 @@ export default class StrategoPiece {
 
   handlePieceClick = () => {
     this.square && this.square.board.game.setSelectedPiece(this);
+    this.setMovableSquares();
     for (let i = 0; i < this.movableSquares.length; i++) {
       let coord = this.movableSquares[i];
       const square = this.square?.board.cells[coord[1] - 1][coord[0] - 1];
