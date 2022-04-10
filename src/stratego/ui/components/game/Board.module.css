@@ -9,6 +9,30 @@
   flex-wrap: wrap;
 }
 
+.boardOpponent {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  content: "Player 2";
+  transform: translateY(calc(var(--width) * -0.525));
+  /* border: red solid; */
+  width: var(--width);
+}
+
+.boardPlayer {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  content: "Player 1";
+  transform: translateY(calc(var(--width) * 0.525));
+  /* border: red solid; */
+  width: var(--width);
+}
+
+.boardActive {
+  animation: blinkBorder 1s linear infinite;
+}
+
 .square {
   border: 0.5px black inset;
   width: var(--cell);
@@ -70,5 +94,16 @@
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
+  }
+}
+
+@keyframes blinkBorder {
+  from {
+    border: blue solid;
+    color: blue;
+  }
+  to {
+    border: red inset;
+    color: red;
   }
 }

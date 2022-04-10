@@ -8,6 +8,7 @@ export default class Game {
   playerRed: boolean;
   board: Board;
   selectedPiece?: StrategoPiece;
+  playerTurn: boolean;
 
   constructor(playerRed: boolean) {
     makeObservable(this, {
@@ -21,6 +22,7 @@ export default class Game {
 
     this.uuid = uuid();
     this.playerRed = playerRed;
+    this.playerTurn = playerRed ? true : false;
     this.board = new Board(this);
     this.board.createCells(this);
   }
@@ -30,8 +32,9 @@ export default class Game {
   }
 
   setSelectedPiece = (piece: StrategoPiece) => {
+    const prevSelected = this.selectedPiece;
     this.unSelectPiece();
-    this.selectedPiece = piece;
+    prevSelected !== piece && (this.selectedPiece = piece);
   };
 
   unSelectPiece = () => {
