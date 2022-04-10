@@ -47,7 +47,8 @@ export default class Board {
 
       for (let i = 0; i < quantity; i++) {
         const color = player ? "red" : "blue";
-        piecesArr.push(new cls(color, game));
+        const newSquare = new Square(this, 0, 0);
+        piecesArr.push(new cls(color, newSquare));
       }
 
       return piecesArr;
@@ -143,16 +144,20 @@ export default class Board {
           ? Math.floor(i / 10) + 3
           : Math.floor(i / 10) + 1;
 
-      finalBoard[y - 1][x - 1] = new Square(game.board, x, y, piece);
-      piece.setMovableSquares();
+      finalBoard[y - 1][x - 1] = piece.square;
+      piece.square.x = x;
+      piece.square.y = y;
+      piece.square.piece = piece;
     }
     this.cells = finalBoard;
+    this.cells.forEach((rows) =>
+      rows.forEach(({ piece }) => piece?.setMovableSquares())
+    );
     return finalBoard;
   };
 
   findSquare = (coord: number[]) => {
     const [x, y] = coord;
-
-    return this.cells[y][x];
+    return this.cells[y - 1][x - 1];
   };
 }

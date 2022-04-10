@@ -24,7 +24,7 @@ export default class Square {
 
   handleClick = () => {
     const piece = this.board.game.selectedPiece;
-    if (piece && !this.highlight) return console.log("Can't Move There");
+    if (piece && !this.highlight) return;
     if (piece && piece.square) {
       this.handleMove(piece);
     }

@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import React, { CSSProperties } from "react";
 import StrategoPiece from "../../../models/Pieces/StrategoPiece";
 import Square from "../../../models/Square";
@@ -8,13 +9,12 @@ export interface MyCustomCSS extends CSSProperties {
   "--selected-color": string;
 }
 
-const SquareUI = ({
-  mapCoord,
-  square,
-}: {
+type SquareProps = {
   mapCoord: number[];
   square: Square;
-}) => {
+};
+
+const SquareUI = ({ mapCoord, square }: SquareProps) => {
   const cssClassName = () => {
     if (square.highlight) return styles.squareHighlighted;
     if (square.piece && square.piece.id === square.board.game.selectedPiece?.id)
@@ -29,4 +29,4 @@ const SquareUI = ({
   );
 };
 
-export default SquareUI;
+export default observer(SquareUI);
