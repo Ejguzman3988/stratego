@@ -49,6 +49,9 @@ export default class Game {
   getCurrentPlayer = () => {
     return this.playerRed ? "red" : "blue";
   };
+  getCurrentOpponent = () => {
+    return !this.playerRed ? "red" : "blue";
+  };
 
   createBoard() {
     if (this.playerRed) {
@@ -76,6 +79,13 @@ export default class Game {
     // if target is higher rank then this gotCaptured.
     // if draw then nothing happens.
   }
+
+  activateBattle = (
+    selectedPiece: StrategoPiece | undefined,
+    attackedPiece: StrategoPiece
+  ) => {
+    console.log("BATTLE SCENE");
+  };
 }
 
 export const globalGame = new Game(true);

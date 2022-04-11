@@ -7,7 +7,7 @@ const pieces = rules.pieces;
 const piece = pieces.marshal;
 
 export default class Marshal extends StrategoPiece {
-  constructor(color: string, square: Square) {
+  constructor(color: "red" | "blue", square: Square) {
     super(
       piece.name,
       color,

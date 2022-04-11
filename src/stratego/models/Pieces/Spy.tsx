@@ -7,7 +7,7 @@ const pieces = rules.pieces;
 const piece = pieces.spy;
 
 export default class Spy extends StrategoPiece {
-  constructor(color: string, square: Square) {
+  constructor(color: "red" | "blue", square: Square) {
     super(
       piece.name,
       color,

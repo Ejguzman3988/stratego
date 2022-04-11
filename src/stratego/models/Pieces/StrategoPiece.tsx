@@ -1,11 +1,12 @@
 import { v4 as uuid } from "uuid";
 import Game from "../Game";
 import Square from "../Square";
+import Flag from "./Flag";
 
 export default class StrategoPiece {
   id: string;
   name: string;
-  color: string;
+  color: "red" | "blue";
   details: string;
   rank: number | null;
   movable: boolean;
@@ -15,7 +16,7 @@ export default class StrategoPiece {
 
   constructor(
     name: string,
-    color: string,
+    color: "red" | "blue",
     details: string,
     rank: number | null,
     movable: boolean,
@@ -42,7 +43,7 @@ export default class StrategoPiece {
 
     // if (!game.playerTurn) return;
     // if (!(game.getCurrentPlayer() === this.color)) return;
-
+    if (this.checkAttack()) return;
     this.square && this.square.board.game.setSelectedPiece(this);
     this.setMovableSquares();
     for (let i = 0; i < this.movableSquares.length; i++) {
@@ -56,6 +57,55 @@ export default class StrategoPiece {
           (square.highlight = true) &&
           this.square?.board.highlightedSquares.push(square);
     }
+  };
+
+  checkAttack = () => {
+    const game = this.square.board.game;
+    const [selectedPiece, clickedPiece] = [game.selectedPiece, this];
+    if (!selectedPiece) return false;
+    if (selectedPiece === clickedPiece) return false;
+    if (selectedPiece.color === clickedPiece.color) return false;
+    game.activateBattle(selectedPiece, clickedPiece);
+    this.compare(selectedPiece, clickedPiece);
+  };
+
+  compare = (selectedPiece: StrategoPiece, clickedPiece: StrategoPiece) => {
+    // check if flag
+    const game = selectedPiece.square.board.game;
+    const selectedCaptures = game.board[`${selectedPiece.color}Captures`];
+    const clickedCaptures = game.board[`${clickedPiece.color}Captures`];
+    if (selectedPiece.rank === clickedPiece.rank) {
+      return true;
+    }
+    if (clickedPiece.name === "Flag") alert(`${game.getCurrentPlayer()} WINS`);
+    if (clickedPiece.name === "Bomb") {
+      game.unSelectPiece();
+      clickedCaptures.push(selectedPiece);
+      return true;
+    }
+    if (
+      selectedPiece.rank !== null &&
+      clickedPiece.rank !== null &&
+      selectedPiece.rank > clickedPiece.rank
+    ) {
+      clickedPiece.square.piece = selectedPiece;
+      selectedPiece.square.piece = undefined;
+      selectedPiece.square = clickedPiece.square;
+      selectedCaptures.push(clickedPiece);
+      return true;
+    }
+
+    if (
+      selectedPiece.rank !== null &&
+      clickedPiece.rank !== null &&
+      selectedPiece.rank < clickedPiece.rank
+    ) {
+      selectedPiece.square.piece = undefined;
+      clickedCaptures.push(selectedPiece);
+    }
+
+    // check if bomb
+    //
   };
 
   isPlayerPiece = () =>

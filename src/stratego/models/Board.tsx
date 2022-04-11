@@ -22,8 +22,8 @@ export default class Board {
   player_pieces: StrategoPiece[];
   opponent_pieces: StrategoPiece[];
   highlightedSquares: Square[];
-  red_captures: StrategoPiece[];
-  blue_captures: StrategoPiece[];
+  redCaptures: StrategoPiece[];
+  blueCaptures: StrategoPiece[];
   game: Game;
 
   constructor(game: Game) {
@@ -32,8 +32,8 @@ export default class Board {
     this.player_pieces = this.createPieces(game.playerRed, this.game);
     this.opponent_pieces = this.createPieces(!game.playerRed, this.game);
     this.cells = [];
-    this.red_captures = [];
-    this.blue_captures = [];
+    this.redCaptures = [];
+    this.blueCaptures = [];
     this.highlightedSquares = [];
   }
 
