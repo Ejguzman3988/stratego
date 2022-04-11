@@ -13,6 +13,7 @@ export default class StrategoPiece {
   image: string;
   movableSquares: number[][];
   square: Square;
+  captured: boolean;
 
   constructor(
     name: string,
@@ -32,6 +33,7 @@ export default class StrategoPiece {
     this.movableSquares = [];
     this.image = image;
     this.square = square;
+    this.captured = false;
   }
 
   getSquare = () => {
@@ -75,12 +77,17 @@ export default class StrategoPiece {
     const selectedCaptures = game.board[`${selectedPiece.color}Captures`];
     const clickedCaptures = game.board[`${clickedPiece.color}Captures`];
     if (selectedPiece.rank === clickedPiece.rank) {
+      // selectedCaptures.push(clickedPiece);
+      // clickedPiece.captured = true;
+      // clickedCaptures.push(selectedPiece);
+      // selectedPiece.captured = true;
       return true;
     }
     if (clickedPiece.name === "Flag") alert(`${game.getCurrentPlayer()} WINS`);
     if (clickedPiece.name === "Bomb") {
       game.unSelectPiece();
       clickedCaptures.push(selectedPiece);
+      selectedPiece.captured = true;
       return true;
     }
     if (
@@ -92,6 +99,7 @@ export default class StrategoPiece {
       selectedPiece.square.piece = undefined;
       selectedPiece.square = clickedPiece.square;
       selectedCaptures.push(clickedPiece);
+      clickedPiece.captured = true;
       return true;
     }
 
@@ -102,6 +110,7 @@ export default class StrategoPiece {
     ) {
       selectedPiece.square.piece = undefined;
       clickedCaptures.push(selectedPiece);
+      selectedPiece.captured = true;
     }
 
     // check if bomb

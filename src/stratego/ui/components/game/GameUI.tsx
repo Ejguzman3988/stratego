@@ -7,6 +7,7 @@ import StrategoPiece from "../../../models/Pieces/StrategoPiece";
 import PieceCardUI from "./PieceCardUI";
 import { HashLoader } from "react-spinners";
 import { observer } from "mobx-react-lite";
+import Captures from "./Captures";
 
 const GameUI = () => {
   const [loading, setLoading] = useState<boolean>(true);
@@ -40,6 +41,8 @@ const GameUI = () => {
     <div className={styles.container}>
       <h2>Game</h2>
       <BoardUI />
+      <Captures color={"red"} />
+      <Captures color={"blue"} />
       <PieceCardUI piece={globalGame.selectedPiece} />
     </div>
   );

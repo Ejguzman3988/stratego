@@ -20,7 +20,7 @@ const PieceUI = ({ piece }: { piece: StrategoPiece | null }) => {
     >
       {/* <span style={{ border: `5px var(--${piece?.color}-piece) outset` }}> */}
       <span>
-        {(piece && !piece.isPlayerPiece()) ||
+        {(piece && !piece.isPlayerPiece() && !piece.captured) ||
           (piece?.rank ? piece.rank : piece?.name === "Flag" ? "F" : "B")}
         {/* {piece && <img src={piece.image} alt={piece.name} />} */}
       </span>
