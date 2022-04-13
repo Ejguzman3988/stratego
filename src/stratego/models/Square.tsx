@@ -23,6 +23,8 @@ export default class Square {
   }
 
   handleClick = () => {
+    // let piece handle click and not highlight of square
+    if (this.piece) return;
     const piece = this.board.game.selectedPiece;
     if (piece && !this.highlight) return;
     if (piece && piece.square) {

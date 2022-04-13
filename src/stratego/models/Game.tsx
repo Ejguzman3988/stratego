@@ -16,6 +16,7 @@ export default class Game {
       board: observable,
       playerRed: observable,
       selectedPiece: observable,
+      getCurrentPlayer: computed,
       getSelectedPiece: computed,
       setSelectedPiece: action,
       unSelectPiece: action,
@@ -46,9 +47,9 @@ export default class Game {
     this.selectedPiece = undefined;
   };
 
-  getCurrentPlayer = () => {
+  get getCurrentPlayer() {
     return this.playerRed ? "red" : "blue";
-  };
+  }
   getCurrentOpponent = () => {
     return !this.playerRed ? "red" : "blue";
   };

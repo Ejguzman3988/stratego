@@ -137,7 +137,7 @@ export default class Board {
 
     for (let i = 0; i < allPieces.length; i++) {
       let piece: StrategoPiece = allPieces[i];
-      const playerColor = game.getCurrentPlayer();
+      const playerColor = game.getCurrentPlayer;
       const x = (i % 10) + 1;
       const y =
         playerColor === piece.color

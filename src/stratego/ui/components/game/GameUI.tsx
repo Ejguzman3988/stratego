@@ -39,7 +39,7 @@ const GameUI = () => {
     </div>
   ) : (
     <div className={styles.container}>
-      <h2>Game</h2>
+      <h2>PLAYER TURN: {globalGame.playerTurn ? "red" : "blue"}</h2>
       <BoardUI />
       <Captures color={"red"} />
       <Captures color={"blue"} />

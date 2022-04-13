@@ -41,10 +41,8 @@ export default class StrategoPiece {
   };
 
   handlePieceClick = () => {
-    // const game = this.square.board.game;
-
-    // if (!game.playerTurn) return;
-    // if (!(game.getCurrentPlayer() === this.color)) return;
+    const game = this.square.board.game;
+    if (!((game.playerTurn ? "red" : "blue") === this.color)) return;
     if (this.checkAttack()) return;
     this.square && this.square.board.game.setSelectedPiece(this);
     this.setMovableSquares();
@@ -83,7 +81,7 @@ export default class StrategoPiece {
       // selectedPiece.captured = true;
       return true;
     }
-    if (clickedPiece.name === "Flag") alert(`${game.getCurrentPlayer()} WINS`);
+    if (clickedPiece.name === "Flag") alert(`${game.getCurrentPlayer} WINS`);
     if (clickedPiece.name === "Bomb") {
       game.unSelectPiece();
       clickedCaptures.push(selectedPiece);
@@ -117,8 +115,7 @@ export default class StrategoPiece {
     //
   };
 
-  isPlayerPiece = () =>
-    this.square?.board.game.getCurrentPlayer() === this.color;
+  isPlayerPiece = () => this.square?.board.game.getCurrentPlayer === this.color;
 
   getMovableSquares = () => {};
 
