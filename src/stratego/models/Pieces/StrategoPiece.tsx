@@ -41,12 +41,12 @@ export default class StrategoPiece {
   };
 
   handlePieceClick = () => {
-    // const game = this.square.board.game;
+    const game = this.square.board.game;
 
-    // if (!game.playerTurn) return;
-    // if (!(game.getCurrentPlayer() === this.color)) return;
+    if (!game.playerTurn) return;
+    if (!(game.getCurrentPlayer() === this.color)) return;
     if (this.checkAttack()) return;
-    this.square && this.square.board.game.setSelectedPiece(this);
+    this.square && game.setSelectedPiece(this);
     this.setMovableSquares();
     for (let i = 0; i < this.movableSquares.length; i++) {
       let coord = this.movableSquares[i];
